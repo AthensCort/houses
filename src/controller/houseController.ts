@@ -1,4 +1,4 @@
-import POLLO from "../db/fakeService"
+import FakeService from "../db/house"
 //OMFG no me da error si no le pongo los backets
 //cuando es export default se guarda en un identificador
 
@@ -13,8 +13,19 @@ export class HouseController{
         this.dbService= new FakeService();
     }
 
-    async getHousesByType(type: string, minPrice: number, maxPrice:number){
-        const dbService= new FakeService();
-        dbService.getHouses(type, minPrice, maxPrice)
+    async getHousesByType(type: string, minPrice: number, maxPrice: number) {
+        const housesByType = await this.dbService.getHouseByType(type);
+        const filtered = housesByType.filter(
+            (house) => house.price > minPrice && house.price < maxPrice
+        );
+        return filtered;
+    }
+
+    async getAllHouses() {
+        return await this.dbService.getHouses();
+    }
+
+    async getHouse(id: number) {
+        return await this.dbService.getHouseById(id);
     }
 }
