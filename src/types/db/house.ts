@@ -1,14 +1,3 @@
-class House2 {
-    private price: number = 0;
-
-    setPrice(price: number) {
-        if (price < 2000) {
-            const newPrices = api.getPrices(); 
-        } else {
-            this.price = price;
-        }
-    }
-}
 
 export interface House {
     id: number;
@@ -22,4 +11,4 @@ export interface House {
     type: string;
 }
 
-export default House2;
+export default House;

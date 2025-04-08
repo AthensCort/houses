@@ -1,6 +1,6 @@
 import { House } from '../types/db/house';
 
-const fake_houses: House[] = [
+const houses: House[] = [
     {
         id: 1,
         price: 100,
@@ -10,7 +10,7 @@ const fake_houses: House[] = [
         duration: "3 meses",
         terrainArea: 80,
         constructionArea: 200,
-        type: "departamento"
+        type: "renta"
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const fake_houses: House[] = [
         duration: "3 meses",
         terrainArea: 800,
         constructionArea: 2000,
-        type: "casa"
+        type: "renta"
     },
     {
         id: 3,
@@ -32,17 +32,23 @@ const fake_houses: House[] = [
         duration: "1 mes",
         terrainArea: 10,
         constructionArea: 20,
-        type: "departamento"
+        type: "venta"
     }
 ];
 
-class FakeService {
+class FakeService { 
+    //Las cuatro funciones principales 
     async getHouses(): Promise<House[]> {
-        return fake_houses;
+        return houses;
     }
-
     async getHouseById(id: number): Promise<House | undefined> {
-        return fake_houses.find(house => house.id === id);
+        return houses.find(house => house.id === id);
+    }
+    async getHouseByRange(priceMin:number, priceMax:number): Promise<House[]> {
+        return houses.filter(house=> house.price >priceMin && house.price < priceMax)
+    }
+    async getHouseByType(type:string){
+        return houses.filter(house=> house.type == type)
     }
 }
 
