@@ -1,4 +1,3 @@
-// src/handler/houseHandler.ts
 import { Request, Response, NextFunction } from "express";
 import { HouseController } from "../controller/houseController";
 

@@ -1,4 +1,3 @@
-
 export interface House {
     id: number;
     price: number;
